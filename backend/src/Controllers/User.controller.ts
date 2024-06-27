@@ -18,12 +18,12 @@ export class UserController {
     }
 
     @Post('create')
-    async create(@Body() createUserDto: CreateUserDto){
-        return this.create(createUserDto)
+    async create(@Body() createUserDto: CreateUserDto) {
+        return this.userService.create(createUserDto);
     }
 
     @Delete('delete/:id')
     async delete(@Param('id') id: number) {
-        return this.delete(id)
+        return this.userService.delete(id);
     }
 }

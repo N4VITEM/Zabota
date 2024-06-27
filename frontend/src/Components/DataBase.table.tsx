@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import getTable from "../Services/DataBase.service.tsx";
 import { tableDto } from "../DTO/DataBase.dto";
-import Table from "react-bootstrap/Table";
+import { Table } from "react-bootstrap";
 
 export default function DataBaseTable() {
     const [data, setData] = useState<tableDto[]>([])
@@ -18,7 +18,7 @@ export default function DataBaseTable() {
  
     return (
         <div className="Component">
-            {data ? <Table>
+            {data ? <Table striped >
                 <thead>
                     <tr>
                         <th>ID</th>

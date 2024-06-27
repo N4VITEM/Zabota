@@ -1,0 +1,109 @@
+.Quize {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all .6s ease-out;
+}
+
+.Quize-container {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Quize-header {
+    width: 100%;
+    text-align: center;
+}
+
+.quize-close {
+    transform: translateX(-100vh);
+    opacity: 0;
+}
+
+.Quize-Button-Select {
+    width: 100%;
+    height: 30%;
+    margin: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 1.5rem;
+    background: rgb(241, 99, 10);
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
+
+.Quize-Button-Container, .Quize-Select-Container {
+    width: 100%;
+    height: 50%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Quize-Select-Container {
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+.Quize-container label {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.Quize-Input {
+    margin-top: 1rem;
+    width: 100%;
+    height: 4rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+}
+.Quize-Input-Container{
+    width: 100%;
+}
+
+.Quize-Selector {
+    width: 100%;
+    height: 80%;
+}
+
+.Quize-Option {
+    position: relative;
+    text-wrap: wrap;
+    width: 100%;
+    padding: 1rem;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+.Quize-Submit {
+    width: 100%;
+    height: 4rem;
+    margin-top: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 1.5rem;
+    background-color: rgb(241, 99, 10);
+}
+
+.Success-img{
+    height: 5rem;
+    width: 5rem;
+}
