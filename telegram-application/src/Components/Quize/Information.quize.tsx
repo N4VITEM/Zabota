@@ -9,11 +9,11 @@ export default function InformationQuize({ isOpen, handleInformation }) {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [date, setDate] = useState('');
-    const [currentUrl, setCurrentUrl] = useState('');
+    const [currentUrl, setCurrentUrl] = useState('telegram');
 
     useEffect(() => {
         setQuizeHeader(isOpen === true ? 'quize-open' : 'quize-close');
-        setCurrentUrl(window.location.href);
+        setCurrentUrl('telegram');
     }, [isOpen]);
 
     const handleFormSubmit = (event) => {

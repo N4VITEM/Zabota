@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { tableDto } from '../DTO/user.dto.ts';
 
-const API_ENDPOINT = 'http://localhost:7070/user/create';
+const API_ENDPOINT = 'https://zabota-web-service.ru/user/create';
 
 export const sendUserData = async (userData: tableDto) => {
     try {
