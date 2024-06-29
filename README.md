@@ -6,9 +6,7 @@
 - Beget.com (vps + domen)
 - Telegram Web Apps
 
-### данный проект реализован в качестве тестового задания для компании Deneb, работа выполнена Меткалевым Иваном
-
-#### конфигурация сервера
+### конфигурация сервера
 server {
     listen 80;
     server_name statistics.zabota-web-service.ru;
@@ -76,4 +74,4 @@ server {
     }
 }
 
-##### В случае если вы заинтересованны в услугах FullStack разработчика Node.js, то прошу вас ознакомится с моим резюме на HH.ru: https://petrozavodsk.hh.ru/resume/d33a5e53ff0d4034290039ed1f306559716739
+#### В случае если вы заинтересованны в услугах FullStack разработчика Node.js, то прошу вас ознакомится с моим резюме на HH.ru: https://petrozavodsk.hh.ru/resume/d33a5e53ff0d4034290039ed1f306559716739
