@@ -11,7 +11,7 @@ export default function RoleQuize({isOpen, handleRole}) {
 
     return (
         <div className={'Quize '+ QuizeHeader}>
-            <div className="Quize-container">
+            <div className="Quize-container role-selection">
                 <h1 className="Quize-header">Выберите вашу роль</h1>
                 <div className="Quize-Button-Container">
                     <Button className="Quize-Button-Select" onClick={()=>handleRole('Маркетолог')}>Маркетолог</Button>

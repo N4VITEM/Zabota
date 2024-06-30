@@ -56,28 +56,33 @@ export default function InformationQuize({ isOpen, handleInformation }) {
         <div className={'Quize ' + QuizeHeader}>
             <div className="Quize-container">
                 <Form.Label>Заполните данные и мы проведем презентацию</Form.Label>
+                {error && (
+                    <h3 className="error-text">
+                         * заполните все обязательные поля
+                    </h3>
+                )}
                 <Form onSubmit={handleSubmit} className="Quize-Input-Container">
-                    <Form.Group controlId="formName" className="mb-3">
+                    <Form.Group controlId="formName" className="mb-2">
                         <Form.Control
                             type="text"
                             placeholder="ваше Имя"
-                            className="Quize-Input"
+                            className={error === true && name.length === 0 ? 'Quize-Input input-error' : 'Quize-Input'}
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
                         />
                     </Form.Group>
-                    <Form.Group controlId="formSurname" className="mb-3">
+                    <Form.Group controlId="formSurname" className="mb-2">
                         <Form.Control
                             type="text"
                             placeholder="ваша Фамилия"
-                            className="Quize-Input"
+                            className={error === true && surname.length === 0 ? 'Quize-Input input-error' : 'Quize-Input'}
                             value={surname}
                             onChange={(e) => setSurname(e.target.value)}
                             required
                         />
                     </Form.Group>
-                    <Form.Group controlId="formPatronymic" className="mb-3">
+                    <Form.Group controlId="formPatronymic" className="mb-2">
                         <Form.Control
                             type="text"
                             placeholder="ваше Отчество"
@@ -87,7 +92,7 @@ export default function InformationQuize({ isOpen, handleInformation }) {
                             required
                         />
                     </Form.Group>
-                    <Form.Group controlId="formPhone" className="mb-3">
+                    <Form.Group controlId="formPhone" className="mb-2">
                         <PhoneInput
                             country={'ru'}
                             value={phone}
@@ -95,26 +100,25 @@ export default function InformationQuize({ isOpen, handleInformation }) {
                             inputProps={{
                                 name: 'phone',
                                 required: true,
-                                autoFocus: true,
-                                className: "Quize-Input phone"
+                                className: error === true && phone.length === 0 ? 'Quize-Input phone input-error' : 'Quize-Input phone'
                             }}
                         />
                     </Form.Group>
-                    <Form.Group controlId="formEmail" className="mb-3">
+                    <Form.Group controlId="formEmail" className="mb-2">
                         <Form.Control
                             type="email"
                             placeholder="ваш Email"
-                            className="Quize-Input"
+                            className={error === true && email.length === 0 ? 'Quize-Input input-error' : 'Quize-Input'}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                     </Form.Group>
-                    <Form.Group controlId="formDate" className="mb-3">
+                    <Form.Group controlId="formDate" className="mb-2">
                         <Form.Control
                             type="date"
                             placeholder="выберите дату"
-                            className="Quize-Input"
+                            className={error === true && date.length === 0 ? 'Quize-Input input-error' : 'Quize-Input'}
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
                             required

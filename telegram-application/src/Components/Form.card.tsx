@@ -77,6 +77,9 @@ export default function Form({ isFrmOpen, handleForm }) {
             sendUserData(user).then(response => {
                 console.log('Data sent successfully:', response);
                 setSuccess(true);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
             }).catch(error => {
                 console.error('Error sending data:', error);
             });

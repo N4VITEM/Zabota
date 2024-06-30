@@ -68,8 +68,8 @@ export default function DataQuize({ isOpen, handleData }) {
                 setError(true);
             } else {
                 handleData(
-                     parseFloat(userInput.replace(/\s|₽/g, '')),
-                     misSelected?.label
+                    parseFloat(userInput.replace(/\s|₽/g, '')),
+                    misSelected?.label
                 );
             }
         }
@@ -93,8 +93,7 @@ export default function DataQuize({ isOpen, handleData }) {
                 <Form.Label>У вас есть МИС?</Form.Label>
                 {error === true &&
                     <h3 className="error-text">
-                        <p>* пожалуйста выберите вариант</p>
-                        <p>а также просим вас указать вашу выручку</p>
+                        * пожалуйста выберите вариант
                     </h3>
                 }
                 <div className="Quize-Select-Container">
@@ -120,6 +119,11 @@ export default function DataQuize({ isOpen, handleData }) {
                 </div>
                 <Form.Group controlId="userInput" className="Quize-Input-Container">
                     <Form.Label>просим вас указать вашу выручку</Form.Label>
+                    {error === true &&
+                        <h3 className="error-text">
+                            * пожалуйста, укажите вашу выручку
+                        </h3>
+                    }
                     <Form.Control
                         type="text"
                         placeholder="(пример) 5 000 000 ₽"

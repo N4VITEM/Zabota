@@ -47,10 +47,8 @@ h3{
 }
 
 .error-text{
-  position: fixed;
-  top: 3rem;
-  left: 2rem;
-  width: 70%;
-  text-align: start;
+  position: relative;
+  width: 100%;
+  text-align: center;
   color: brown;
 }

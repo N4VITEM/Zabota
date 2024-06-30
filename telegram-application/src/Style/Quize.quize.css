@@ -6,9 +6,9 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     transition: all .6s ease-out;
+    justify-content: flex-end;
 }
 
 .Quize-container {
@@ -16,7 +16,7 @@
     height: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -28,6 +28,10 @@
 .quize-close {
     transform: translateX(-100vh);
     opacity: 0;
+}
+
+.role-selection{
+    justify-content: center;
 }
 
 .Quize-Button-Select {
@@ -54,11 +58,17 @@
     background-color: rgb(241, 99, 10);
 }
 
-.Quize-Button-Container,
 .Quize-Select-Container {
+    position: relative;
     width: 100%;
-    height: 50%;
-    margin-top: 2rem;
+    height: 48%;
+    display: flex;
+    flex-direction: column;
+}
+.Quize-Button-Container{
+    position: relative;
+    width: 100%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,7 +89,7 @@
 .Quize-Input {
     margin-top: 1rem;
     width: 100%;
-    height: 4rem;
+    height: 3rem;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 0.5rem;
@@ -88,6 +98,9 @@
 }
 .phone {
     margin-top: 0;
+}
+.input-error{
+    border: 1px solid brown !important;
 }
 
 .Quize-Input-Container {
@@ -111,13 +124,13 @@
 
 .Quize-Submit {
     width: 100%;
-    height: 4rem;
-    margin-top: 2rem;
+    min-height: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 1.5rem;
     background-color: rgb(224, 172, 139);
     transition: all .3s ease;
-
 }
 .active{
     background-color: rgb(241, 99, 10) !important;
@@ -132,7 +145,7 @@
 .Quize-Select-Container {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 50%;
     display: flex;
     flex-direction: column;
 }
@@ -150,7 +163,7 @@
     display: flex;
     min-width: 45%;
     margin: 0.5rem;
-    height: 15rem;
+    height: 100%;
     padding: 1rem;
     border: 1px solid #ccc;
     flex-direction: column;
@@ -169,6 +182,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
     justify-content: flex-start;
+    padding-bottom: 1rem;
 }
 
 

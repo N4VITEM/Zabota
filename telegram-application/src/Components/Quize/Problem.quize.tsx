@@ -83,8 +83,7 @@ export default function ProblemQuize({ isOpen, handleProblem }) {
                 <Form.Label>Выберите вашу проблему</Form.Label>
                 {error && (
                     <h3 className="error-text">
-                        <p>* пожалуйста выбирите проблему</p>
-                        <p>если вашей проблемы нет в списке, то укажие свой вариант</p>
+                        * пожалуйста выбирите проблему
                     </h3>
                 )}
                 <div className="Quize-Select-Container">
@@ -108,6 +107,11 @@ export default function ProblemQuize({ isOpen, handleProblem }) {
                         ))}
                     </div>
                 </div>
+                {error && (
+                    <h3 className="error-text">
+                         * если вашей проблемы нет в списке, то укажие свой вариант
+                    </h3>
+                )}
                 <Form.Group controlId="userInput" className="Quize-Input-Container">
                     <Form.Control
                         type="text"
