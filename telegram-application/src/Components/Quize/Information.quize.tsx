@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Placeholder } from "react-bootstrap";
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 export default function InformationQuize({ isOpen, handleInformation }) {
     const [QuizeHeader, setQuizeHeader] = useState('close');
@@ -9,28 +11,44 @@ export default function InformationQuize({ isOpen, handleInformation }) {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [date, setDate] = useState('');
-    const [currentUrl, setCurrentUrl] = useState('telegram');
+    const [currentUrl, setCurrentUrl] = useState('bot.zabota-web-service.ru');
+    const [error, setError] = useState<boolean | undefined>(undefined);
 
     useEffect(() => {
         setQuizeHeader(isOpen === true ? 'quize-open' : 'quize-close');
-        setCurrentUrl('telegram');
+        setCurrentUrl('bot.zabota-web-service.ru');
     }, [isOpen]);
 
-    const handleFormSubmit = (event) => {
+    useEffect(()=>{
+        if(name.length === 0 || surname.length === 0 || (phone.length === 0 && email.length === 0) || date.length === 0){
+            setError(true);
+        }
+        else {
+            setError(false)
+        }
+    },[name, surname, phone, email, date])
+
+    const handleSubmit = (event) => {
         event.preventDefault();
-        if (name && surname && patronymic && phone && email && date) {
-            const formData = {
-                name,
-                surname,
-                patronymic,
-                phone,
-                email,
-                date,
-                currentUrl
-            };
-            handleInformation(formData.name, formData.surname, formData.patronymic, formData.email, formData.phone, formData.date, formData.currentUrl);
+        if (error === true) {
+            console.log('ошибка при отправке формы. Форма пуста')
         } else {
-            alert("Пожалуйста, заполните все поля.");
+            if (error === undefined && (name.length === 0 || surname.length === 0 || (phone.length === 0 && email.length === 0) || date.length === 0)) {
+                setError(true);
+            } else {
+                if (name && surname && patronymic && phone && email && date) {
+                    const formData = {
+                        name,
+                        surname,
+                        patronymic,
+                        phone,
+                        email,
+                        date,
+                        currentUrl
+                    };
+                    handleInformation(formData.name, formData.surname, formData.patronymic, formData.email, formData.phone, formData.date, formData.currentUrl);
+                } 
+            }
         }
     };
 
@@ -38,7 +56,7 @@ export default function InformationQuize({ isOpen, handleInformation }) {
         <div className={'Quize ' + QuizeHeader}>
             <div className="Quize-container">
                 <Form.Label>Заполните данные и мы проведем презентацию</Form.Label>
-                <Form onSubmit={handleFormSubmit} className="Quize-Input-Container">
+                <Form onSubmit={handleSubmit} className="Quize-Input-Container">
                     <Form.Group controlId="formName" className="mb-3">
                         <Form.Control
                             type="text"
@@ -70,13 +88,16 @@ export default function InformationQuize({ isOpen, handleInformation }) {
                         />
                     </Form.Group>
                     <Form.Group controlId="formPhone" className="mb-3">
-                        <Form.Control
-                            type="text"
-                            placeholder="ваш телефон"
-                            className="Quize-Input"
+                        <PhoneInput
+                            country={'ru'}
                             value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
-                            required
+                            onChange={(phone) => setPhone(phone)}
+                            inputProps={{
+                                name: 'phone',
+                                required: true,
+                                autoFocus: true,
+                                className: "Quize-Input phone"
+                            }}
                         />
                     </Form.Group>
                     <Form.Group controlId="formEmail" className="mb-3">
@@ -100,7 +121,12 @@ export default function InformationQuize({ isOpen, handleInformation }) {
                         />
                     </Form.Group>
                     <input type="hidden" name="currentUrl" value={currentUrl} />
-                    <Button type="submit" className="Quize-Submit">далее</Button>
+                    <Button
+                    className={error !== true ? 'Quize-Submit active' : 'Quize-Submit'}
+                    onClick={handleSubmit}
+                >
+                    отправить
+                </Button>
                 </Form>
             </div>
         </div>

@@ -45,3 +45,12 @@ h3{
   margin-top: 1.5rem;
   z-index: 3;
 }
+
+.error-text{
+  position: fixed;
+  top: 3rem;
+  left: 2rem;
+  width: 70%;
+  text-align: start;
+  color: brown;
+}

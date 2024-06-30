@@ -36,13 +36,11 @@ export default function Form({ isFrmOpen, handleForm }) {
         setProblem(problem);
     }
 
-    function handleData(revenue, mis) {
+    function handleData(revenue:number, mis: string) {
         setRevenue(revenue);
-        setMIS(mis ? mis : 'none');
+        setMIS(mis !== 'нет' ? mis : 'нет');
         setIsMoreThan10M(revenue >= 10000000 ? true : false);
-        setIsMISintegration(mis ? true : false);
-
-        console.log(revenue, mis);
+        setIsMISintegration(mis !== 'нет' ? true : false);
     }
 
     function handleInformation(name, surname, thirdname, email, phone, date, url) {

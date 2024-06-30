@@ -30,7 +30,8 @@
     overflow: hidden;
 }
 .close{
-    transform: translateY(100vh);
+    height: 0 !important;
+    overflow: hidden;
 }
 .Button-close-container{
     position: relative;

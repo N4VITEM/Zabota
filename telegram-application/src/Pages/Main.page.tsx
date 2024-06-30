@@ -11,6 +11,7 @@ export default function MainPage() {
     function handleForm() {
         setIsFormOpen(!isFrmOpen)
     }
+    console.log(isFrmOpen)
 
     return (
         <div className="Page">
@@ -20,11 +21,11 @@ export default function MainPage() {
                 <h1 className="main-text">
                     Zabota 2.0 — умная система для работы с базой пациентов и увеличения выручки клиники
                 </h1>
-                <Button className="main-button" onClick={handleForm}>Заполнить форму</Button>
+                {isFrmOpen === false ?<Button className="main-button" onClick={handleForm}>Заполнить форму</Button>: <></>}
                 {isFrmOpen === false ? <Menu/> : <></>}
-                <h3>
+                {isFrmOpen === false ? <h3>
                     *сервис разработан в рамках тестового задания, автор - Меткалев Иван
-                </h3>
+                </h3>: <></> }
             </div>
             <Form isFrmOpen={isFrmOpen} handleForm={handleForm}/>
         </div>

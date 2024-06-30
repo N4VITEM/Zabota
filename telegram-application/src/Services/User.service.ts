@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { tableDto } from '../DTO/user.dto.ts';
 
-const API_ENDPOINT = 'https://zabota-web-service.ru/user/create';
+const API_ENDPOINT = `${process.env.REACT_APP_URL}/user/create`;
 
 export const sendUserData = async (userData: tableDto) => {
     try {
