@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import '../../Style/Quize.quize.css';
 
-import icon_none from '../../media/icon_MIS_none.png';
-import icon_1 from '../../media/icon_MIS_1.png';
-import icon_2 from '../../media/icon_MIS_2.png';
-import icon_3 from '../../media/icon_MIS_3.png';
+import icon_money from '../../media/icon_money.png';
 
 interface Mis {
     id: number;
@@ -17,13 +14,13 @@ interface Mis {
 }
 
 const initialMIS: Mis[] = [
-    { id: 1, label: "нет", text: "МИС отсутствует", value: 0, img: icon_none, selected: false },
-    { id: 2, label: "Ромашка", text: "МИС - Ромашка", value: 2, img: icon_1, selected: false },
-    { id: 3, label: "Лютик", text: "МИС - Лютик", value: 2, img: icon_2, selected: false },
-    { id: 4, label: "Камень", text: "МИС - Камень", value: 0, img: icon_3, selected: false },
+    { id: 1, label: "до 1 млн. ₽", text: "выручка до 1 млн. ₽", value: -99, img: icon_money, selected: false },
+    { id: 2, label: "от 1 до 5 млн. ₽", text: "выручка от 1 до 5 млн. ₽", value: -99, img: icon_money, selected: false },
+    { id: 3, label: "от 5 до 10 млн. ₽", text: "выручка от 1 до 5 млн. ₽", value: 1, img: icon_money, selected: false },
+    { id: 4, label: "свыше 10 млн. ₽", text: "выручка свыше 10 млн. ₽", value: 2, img: icon_money, selected: false },
 ];
 
-export default function DataQuize({ isOpen, handleData }) {
+export default function RevenueQuize({ isOpen, handleRevenue }) {
     const [mis, setMis] = useState<Mis[]>(initialMIS);
     const [QuizeHeader, setQuizeHeader] = useState('close');
     const [misSelected, setMisSelected] = useState<Mis | undefined>(undefined);
@@ -61,18 +58,17 @@ export default function DataQuize({ isOpen, handleData }) {
             if (error === undefined && misSelected === undefined) {
                 setError(true);
             } else {
-                handleData(
+               handleRevenue(
                     misSelected?.label,
                     misSelected?.value
                 );
             }
         }
     };
-
     return (
         <div className={`Quize ${QuizeHeader}`}>
             <div className="Quize-container">
-                <Form.Label>Какой у вас МИС ?</Form.Label>
+                <Form.Label>Какая у вас выручка за год в ₽?</Form.Label>
                 {error === true &&
                     <h3 className="error-text">
                         * пожалуйста выберите вариант

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Placeholder } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
 export default function InformationQuize({ isOpen, handleInformation }) {
     const [QuizeHeader, setQuizeHeader] = useState('close');
     const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [patronymic, setPatronymic] = useState('');
+    const [clinic, setClinic] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [date, setDate] = useState('');
@@ -19,35 +18,34 @@ export default function InformationQuize({ isOpen, handleInformation }) {
         setCurrentUrl('bot.zabota-web-service.ru');
     }, [isOpen]);
 
-    useEffect(()=>{
-        if(name.length === 0 || surname.length === 0 || (phone.length === 0 && email.length === 0) || date.length === 0){
+    useEffect(() => {
+        if (name.length === 0 || clinic.length === 0 || (phone.length === 0 && email.length === 0) || date.length === 0) {
             setError(true);
         }
         else {
             setError(false)
         }
-    },[name, surname, phone, email, date])
+    }, [name, phone, email, date])
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (error === true) {
             console.log('ошибка при отправке формы. Форма пуста')
         } else {
-            if (error === undefined && (name.length === 0 || surname.length === 0 || (phone.length === 0 && email.length === 0) || date.length === 0)) {
+            if (error === undefined && (name.length === 0 || clinic.length === 0 || (phone.length === 0 && email.length === 0) || date.length === 0)) {
                 setError(true);
             } else {
-                if (name && surname && patronymic && phone && email && date) {
+                if (name && clinic && phone && email && date) {
                     const formData = {
                         name,
-                        surname,
-                        patronymic,
+                        clinic,
                         phone,
                         email,
                         date,
                         currentUrl
                     };
-                    handleInformation(formData.name, formData.surname, formData.patronymic, formData.email, formData.phone, formData.date, formData.currentUrl);
-                } 
+                    handleInformation(formData.name, formData.clinic, formData.email, formData.phone, formData.date, formData.currentUrl);
+                }
             }
         }
     };
@@ -56,43 +54,33 @@ export default function InformationQuize({ isOpen, handleInformation }) {
         <div className={'Quize ' + QuizeHeader}>
             <div className="Quize-container">
                 <Form.Label>Заполните данные и мы проведем презентацию</Form.Label>
-                {error && (
-                    <h3 className="error-text">
-                         * заполните все обязательные поля
-                    </h3>
-                )}
                 <Form onSubmit={handleSubmit} className="Quize-Input-Container">
-                    <Form.Group controlId="formName" className="mb-2">
+                    {error && (
+                        <h3 className="error-text">
+                            * заполните все обязательные поля
+                        </h3>
+                    )}
+                    <Form.Group controlId="formName" className="mb-1">
                         <Form.Control
                             type="text"
-                            placeholder="ваше Имя"
+                            placeholder="как к вам обращаться?"
                             className={error === true && name.length === 0 ? 'Quize-Input input-error' : 'Quize-Input'}
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
                         />
                     </Form.Group>
-                    <Form.Group controlId="formSurname" className="mb-2">
+                    <Form.Group controlId="formClinic" className="mb-1">
                         <Form.Control
                             type="text"
-                            placeholder="ваша Фамилия"
-                            className={error === true && surname.length === 0 ? 'Quize-Input input-error' : 'Quize-Input'}
-                            value={surname}
-                            onChange={(e) => setSurname(e.target.value)}
+                            placeholder="название вашей клиники"
+                            className={error === true && clinic.length === 0 ? 'Quize-Input input-error' : 'Quize-Input'}
+                            value={clinic}
+                            onChange={(e) => setClinic(e.target.value)}
                             required
                         />
                     </Form.Group>
-                    <Form.Group controlId="formPatronymic" className="mb-2">
-                        <Form.Control
-                            type="text"
-                            placeholder="ваше Отчество"
-                            className="Quize-Input"
-                            value={patronymic}
-                            onChange={(e) => setPatronymic(e.target.value)}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="formPhone" className="mb-2">
+                    <Form.Group controlId="formPhone" className="mb-1">
                         <PhoneInput
                             country={'ru'}
                             value={phone}
@@ -104,7 +92,7 @@ export default function InformationQuize({ isOpen, handleInformation }) {
                             }}
                         />
                     </Form.Group>
-                    <Form.Group controlId="formEmail" className="mb-2">
+                    <Form.Group controlId="formEmail" className="mb-1">
                         <Form.Control
                             type="email"
                             placeholder="ваш Email"
@@ -114,7 +102,8 @@ export default function InformationQuize({ isOpen, handleInformation }) {
                             required
                         />
                     </Form.Group>
-                    <Form.Group controlId="formDate" className="mb-2">
+                    <h3>Выберите дату для презентации</h3>
+                    <Form.Group controlId="formDate" className="mb-1">
                         <Form.Control
                             type="date"
                             placeholder="выберите дату"
@@ -125,13 +114,13 @@ export default function InformationQuize({ isOpen, handleInformation }) {
                         />
                     </Form.Group>
                     <input type="hidden" name="currentUrl" value={currentUrl} />
-                    <Button
+                </Form>
+                <Button
                     className={error !== true ? 'Quize-Submit active' : 'Quize-Submit'}
                     onClick={handleSubmit}
                 >
                     отправить
                 </Button>
-                </Form>
             </div>
         </div>
     );

@@ -9,7 +9,7 @@ import "../Style/Benefits.card.css"
 export default function Benefits() {
     return (
         <div className="Benefits">
-            <div className="benefit">
+            <div className="benefit" id="b-1">
                 <div className="container">
                     <img src={icon_1} alt="img" />
                     <h1>+20-25%</h1>
@@ -17,7 +17,7 @@ export default function Benefits() {
                 <h2>увеличиваются
                     доходы клиники</h2>
             </div>
-            <div className="benefit">
+            <div className="benefit" id="b-2">
                 <div className="container">
                     <img src={icon_2} alt="img" />
                     <h1>в 3-5 раз</h1>
@@ -25,16 +25,16 @@ export default function Benefits() {
                 <h2>увеличивается количество
                     положительных отзывов</h2>
             </div>
-            <div className="benefit">
-                <div className="container">
+            <div className="benefit" id="b-3">
+                <div className="container" >
                     <img src={icon_3} alt="img" />
                     <h1>+14-20%</h1>
                 </div>
                 <h2>растет конверсия
                     в повторный прием</h2>
             </div>
-            <div className="benefit">
-                <div className="container">
+            <div className="benefit" id="b-4">
+                <div className="container" >
                     <img src={icon_4} alt="img" />
                     <h1>3-4 мес</h1>
                 </div>

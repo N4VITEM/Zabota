@@ -1,17 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WellcomeCard from "../Components/Wellcome.card.tsx";
 import Benefits from "../Components/Benefits.card.tsx";
 import { Button } from "react-bootstrap";
 import Menu from "../Components/Menu.card.tsx";
 import Form from "../Components/Form.card.tsx";
+import RoleQuize from "../Components/Quize/Role.quize.tsx";
+import RoleSelection from "../Components/Quize/RoleSelection.quize.tsx";
 
 export default function MainPage() {
     const [isFrmOpen, setIsFormOpen] = useState(false);
+    const [role, setRole] = useState('');
 
     function handleForm() {
         setIsFormOpen(!isFrmOpen)
     }
-    console.log(isFrmOpen)
+
+    function handleRole(select) {
+        setRole(select)
+    }
+
+
+    useEffect(()=>{
+        setIsFormOpen(role.length !== 0 ? true : false)
+    }, [role])
 
     return (
         <div className="Page">
@@ -19,15 +30,17 @@ export default function MainPage() {
                 <WellcomeCard/>
                 <Benefits/>
                 <h1 className="main-text">
-                    Zabota 2.0 — умная система для работы с базой пациентов и увеличения выручки клиники
+                    укажите вашу роль
                 </h1>
-                {isFrmOpen === false ?<Button className="main-button" onClick={handleForm}>Заполнить форму</Button>: <></>}
-                {isFrmOpen === false ? <Menu/> : <></>}
-                {isFrmOpen === false ? <h3>
-                    *сервис разработан в рамках тестового задания, автор - Меткалев Иван
-                </h3>: <></> }
+                {isFrmOpen === false ? <RoleSelection handleRole={handleRole}/> : <></>}
             </div>
-            <Form isFrmOpen={isFrmOpen} handleForm={handleForm}/>
+            <Form isFrmOpen={isFrmOpen} handleForm={handleForm} Role={role}/>
         </div>
     )
 }
+
+/*{isFrmOpen === false ?<Button className="main-button" onClick={handleForm}>Заполнить форму</Button>: <></>}
+                {isFrmOpen === false ? <Menu/> : <></>}
+                {isFrmOpen === false ? <h3>
+                    *сервис разработан в рамках тестового задания, автор - Меткалев Иван
+                </h3>: <></> }*/

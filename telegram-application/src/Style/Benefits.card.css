@@ -15,8 +15,24 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #ccc;
     border-radius: 0.5rem;
+    
+}
+#b-1 {
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+#b-2 {
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+#b-3 {
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+#b-4 {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
 }
 .benefit h1 {
     font-size: 1rem;

@@ -14,21 +14,17 @@ export class User extends Model<User> {
     })
     UTM: string;
 
+    @AllowNull
     @Column({
         type: DataType.STRING
     })
-    name: string; 
-
-    @Column({
-        type: DataType.STRING
-    })
-    surname: string;
+    name: string;
 
     @AllowNull
     @Column({
         type: DataType.STRING
     })
-    thirdname: string;
+    clinic: string;
 
     @Column({
         type: DataType.STRING
@@ -66,13 +62,17 @@ export class User extends Model<User> {
     problem: string;
 
     @Column({
-        type: DataType.FLOAT
+        type: DataType.STRING
     })
-    revenue: number;
+    revenue: string;
 
     @Column({
         type: DataType.STRING
     })
     MIS: string;
 
+    @Column({
+        type: DataType.INTEGER
+    })
+    segmentation: number;
 }

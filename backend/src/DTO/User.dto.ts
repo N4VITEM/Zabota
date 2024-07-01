@@ -2,8 +2,7 @@ export class CreateUserDto {
     id: number;
     UTM: string;
     name: string;
-    surname: string;
-    thirdname: string;
+    clinic: string;
     email: string;
     phone: string;
     date: Date;
@@ -11,6 +10,7 @@ export class CreateUserDto {
     isMISintegration: boolean;
     role: string;
     problem: string;
-    revenue: number;
-    MIS: string
+    revenue: string;
+    MIS: string;
+    segmentation: number;
 }
