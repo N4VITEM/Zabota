@@ -30,7 +30,8 @@ export default function MainPage() {
                 <WellcomeCard/>
                 <Benefits/>
                 <h1 className="main-text">
-                    укажите вашу роль
+                    <p>Посмотрите как наша система может помочь Вам в бизнесе.</p>
+                    <p>Для начала выберите вашу роль</p>
                 </h1>
                 {isFrmOpen === false ? <RoleSelection handleRole={handleRole}/> : <></>}
             </div>
@@ -38,9 +39,3 @@ export default function MainPage() {
         </div>
     )
 }
-
-/*{isFrmOpen === false ?<Button className="main-button" onClick={handleForm}>Заполнить форму</Button>: <></>}
-                {isFrmOpen === false ? <Menu/> : <></>}
-                {isFrmOpen === false ? <h3>
-                    *сервис разработан в рамках тестового задания, автор - Меткалев Иван
-                </h3>: <></> }*/

@@ -72,7 +72,7 @@ export default function DataQuize({ isOpen, handleData }) {
     return (
         <div className={`Quize ${QuizeHeader}`}>
             <div className="Quize-container">
-                <Form.Label>Какой у вас МИС ?</Form.Label>
+                <Form.Label>Какая у вас Медицинская Информационная Система?</Form.Label>
                 {error === true &&
                     <h3 className="error-text">
                         * пожалуйста выберите вариант

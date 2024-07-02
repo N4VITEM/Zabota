@@ -44,7 +44,9 @@ export default function DataBaseTable() {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>UTM метка</th>
+                            <th>UTM</th>
+                            <th>USER</th>
+                            <th>SOURCE</th>
                             <th>ФИО</th>
                             <th>клиника</th>
                             <th>email</th>
@@ -65,6 +67,8 @@ export default function DataBaseTable() {
                                 <tr key={user.id}>
                                     <td className={`${handleHeader(user.segmentation)}`}>{user.id}</td>
                                     <td className={`${handleHeader(user.segmentation)}`}>{user.UTM}</td>
+                                    <td className={`${handleHeader(user.segmentation)}`}>{user.USER}</td>
+                                    <td className={`${handleHeader(user.segmentation)}`}>{user.SOURCE}</td>
                                     <td className={`${handleHeader(user.segmentation)}`}>{user.name}</td>
                                     <td className={`${handleHeader(user.segmentation)}`}>{user.clinic}</td>
                                     <td className={`${handleHeader(user.segmentation)}`}>{user.email}</td>

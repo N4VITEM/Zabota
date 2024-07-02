@@ -12,7 +12,15 @@ export class User extends Model<User> {
     @Column({
         type: DataType.STRING
     })
+    SOURCE: string;
+    @Column({
+        type: DataType.STRING
+    })
     UTM: string;
+    @Column({
+        type: DataType.STRING
+    })
+    USER: string;
 
     @AllowNull
     @Column({

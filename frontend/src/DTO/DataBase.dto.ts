@@ -1,6 +1,8 @@
 export class tableDto {
     id: number;
+    SOURCE: string;
     UTM: string;
+    USER: string;
     name: string;
     clinic: string;
     email: string;

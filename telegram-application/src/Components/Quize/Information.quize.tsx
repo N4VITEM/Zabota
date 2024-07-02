@@ -12,6 +12,7 @@ export default function InformationQuize({ isOpen, handleInformation }) {
     const [date, setDate] = useState('');
     const [currentUrl, setCurrentUrl] = useState('bot.zabota-web-service.ru');
     const [error, setError] = useState<boolean | undefined>(undefined);
+    const [confidentials, setConfidentials] = useState(true);
 
     useEffect(() => {
         setQuizeHeader(isOpen === true ? 'quize-open' : 'quize-close');
@@ -19,23 +20,23 @@ export default function InformationQuize({ isOpen, handleInformation }) {
     }, [isOpen]);
 
     useEffect(() => {
-        if (name.length === 0 || clinic.length === 0 || (phone.length === 0 && email.length === 0) || date.length === 0) {
+        if (name.length === 0 || clinic.length === 0 || (phone.length === 0 && email.length === 0) || date.length === 0 || confidentials === false) {
             setError(true);
         }
         else {
             setError(false)
         }
-    }, [name, phone, email, date])
+    }, [name, phone, email, date,confidentials])
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (error === true) {
             console.log('ошибка при отправке формы. Форма пуста')
         } else {
-            if (error === undefined && (name.length === 0 || clinic.length === 0 || (phone.length === 0 && email.length === 0) || date.length === 0)) {
+            if (error === undefined && (confidentials === false || name.length === 0 || clinic.length === 0 || (phone.length === 0 && email.length === 0) || date.length === 0)) {
                 setError(true);
             } else {
-                if (name && clinic && phone && email && date) {
+                if (name && clinic && phone && email && date && confidentials === true) {
                     const formData = {
                         name,
                         clinic,
@@ -44,7 +45,7 @@ export default function InformationQuize({ isOpen, handleInformation }) {
                         date,
                         currentUrl
                     };
-                    handleInformation(formData.name, formData.clinic, formData.email, formData.phone, formData.date, formData.currentUrl);
+                    handleInformation(formData.name, formData.clinic, formData.email, formData.phone, formData.date);
                 }
             }
         }
@@ -113,6 +114,11 @@ export default function InformationQuize({ isOpen, handleInformation }) {
                             required
                         />
                     </Form.Group>
+                    <div className='Quize-Checkbox'>
+                        <h3><input type="checkbox" checked={confidentials} onChange={() => setConfidentials(!confidentials)} />Отправляя заявку, вы соглашаетесь с</h3>
+                        <a href='https://цбис.рф/paket-dokumentov-po-personalnym-dannym/?utm_source=yandex&utm_medium=cpc&utm_campaign=96195684&utm_content=15024028082_none&utm_term=---autotargeting&yclid=9393840772477091839'>условиями персональных данных</a>
+                    </div>
+
                     <input type="hidden" name="currentUrl" value={currentUrl} />
                 </Form>
                 <Button

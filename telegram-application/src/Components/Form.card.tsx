@@ -24,8 +24,8 @@ export default function Form({ isFrmOpen, handleForm, Role }) {
     const [MIS, setMIS] = useState<string | undefined>(undefined);
     const [Segmentation, setSegmentation] = useState<number | undefined>(undefined);
     const [Clinic, setClinic] = useState<string | undefined>(undefined);
-
     const [Success, setSuccess] = useState(false);
+    const [TelegramUsername, setTelegramUsername] = useState<string | undefined>(undefined);
 
     function handleProblem(problem) {
         setProblem(problem);
@@ -43,27 +43,42 @@ export default function Form({ isFrmOpen, handleForm, Role }) {
         setSegmentation(Segmentation ? (Segmentation + value) : value)
     }
 
-    function handleInformation(name, clinic, email, phone, date, url) {
+    function handleInformation(name, clinic, email, phone, date) {
         setName(name);
         setClinic(clinic);
         setEmail(email);
         setPhone(phone);
         setSelectdDate(date);
-        setUTM(url);
     }
+    useEffect(() => {
+        const initTelegram = () => {
+            if (window.Telegram.WebApp) {
+                window.Telegram.WebApp.ready();
+                const user = window.Telegram.WebApp.initDataUnsafe.user;
+                if (user) {
+                    setTelegramUsername(user.username);
+                }
+            }
+        };
+        initTelegram();
+    }, []);
 
     useEffect(() => {
         setFormClassName(isFrmOpen === true ? 'open' : 'close');
     }, [isFrmOpen]);
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(Segmentation)
     }, [Segmentation])
 
     useEffect(() => {
+        setUTM(window.Telegram.WebApp ? 'telegram' : 'сайт');
+    }, []);
+
+    useEffect(() => {
         if (UTM && Name && Clinic && Segmentation && Email && Phone && SelectedDate && isMoreThan10M !== undefined && isMISintegration !== undefined && Role && Problem && Revenue && MIS) {
             const user = new tableDto();
-            user.UTM = UTM;
+            user.SOURCE = UTM;
             user.name = Name;
             user.email = Email;
             user.phone = Phone;
@@ -76,6 +91,8 @@ export default function Form({ isFrmOpen, handleForm, Role }) {
             user.MIS = MIS;
             user.clinic = Clinic;
             user.segmentation = Segmentation;
+            user.USER = TelegramUsername ? TelegramUsername : '';
+            user.UTM = '';
             console.log(user)
 
             sendUserData(user).then(response => {
