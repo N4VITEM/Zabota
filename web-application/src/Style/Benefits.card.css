@@ -1,0 +1,55 @@
+.Benefits {
+    margin-top: 1.5rem;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.benefit {
+    width: 49%;
+    margin: 0.1rem;
+    padding-top: 0.1rem;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.5rem;
+    
+}
+#b-1 {
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+#b-2 {
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+#b-3 {
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+#b-4 {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+.benefit h1 {
+    font-size: 1rem;
+    text-wrap: nowrap;
+}
+.benefit h2 {
+    font-size: 0.7rem;
+    font-weight: 100;
+    text-align: center;
+}
+.benefit img {
+    height: 3rem;
+}
+.benefit .container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}

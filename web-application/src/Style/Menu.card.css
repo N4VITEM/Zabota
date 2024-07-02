@@ -1,0 +1,29 @@
+.Menu{
+    margin-top: 1.5rem;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.Option {
+    width: 46%;
+    height: 12rem;
+    display: flex;
+    margin: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Option img{
+    width: 6rem;
+}
+
+.Option h1{
+    width: 100%;
+    text-align: center;
+    font-weight: 100;
+    font-size: 0.9rem;
+}

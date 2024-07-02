@@ -1,0 +1,51 @@
+.Form{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    overflow: hidden;
+}
+.Form-container{
+    position: relative;
+    width: 100%;
+    height: 98%;
+    background-color: white;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    box-shadow: 0px 0px 15px #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    transition: all .4s ease-out;
+    z-index: 4;
+}
+.Form-container.no-scroll {
+    overflow: hidden;
+}
+.close{
+    transform: translateY(100vh);
+    overflow: hidden;
+}
+.Button-close-container{
+    position: relative;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 1rem;
+}
+.Button-close{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    border: none;
+    z-index: 5;
+    background: rgb(238, 236, 236);
+    color: black;
+}

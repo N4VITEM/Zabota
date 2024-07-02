@@ -13,7 +13,7 @@ async function bootstrap() {
 
     const app = await NestFactory.create(Application, { httpsOptions });
     app.enableCors({
-      origin: ['https://statistics.zabota-web-service.ru', 'https://bot.zabota-web-service.ru'],
+      origin: ['https://statistics.zabota-web-service.ru', 'https://bot.zabota-web-service.ru', 'https://form.zabota-web-service.ru'],
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       credentials: true,
       allowedHeaders: 'Content-Type, Accept',
@@ -24,7 +24,7 @@ async function bootstrap() {
   else {
     const app = await NestFactory.create(Application);
     app.enableCors({
-      origin: ['http://localhost:3000', 'http://localhost:4000'],
+      origin: ['http://localhost:3000', 'http://localhost:4000', 'http://localhost:7070'],
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       credentials: true,
       allowedHeaders: 'Content-Type, Accept',
